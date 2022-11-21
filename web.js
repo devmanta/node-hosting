@@ -49,6 +49,16 @@ app.get('/.well-known/pki-validation/94BA84BED0F78FC2535B9D873A91BAF0.txt', (req
       }
 });
 
+const {resolve} = require('path');
+const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require('constants');
+// 👇️ if using ES6 Modules syntax
+// import { resolve } from 'path';
+
+app.get('/path', (req, res) => {
+    const absolutePath = resolve('');
+    res.send(absolutePath);
+});
+
 app.get('/insert', (req, res) => {
     const queryString = req.query;
     const params = [queryString.no, queryString.name];
