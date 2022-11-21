@@ -14,13 +14,21 @@ const sslOptions = {
     ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
 };
 
-app.use(function(req, res, next){
-	if(!req.secure){
-		res.redirect("https://devmanta.shop" + req.url);
-	}else{
-		next();
-	}
-});
+app.get("*", (req, res, next) => {
+    console.log("middleware sercure app2 ==> " + req.headers['X-Forwarded-Proto']);
+    console.log("req.protocol == " + req.protocol);
+
+    let protocol = req.headers['X-Forwarded-Proto'] || req.protocol;
+    console.log("protocol == " + protocol);
+    
+    if(protocol == 'http'){
+        let to = "https://" + req.headers.host + req.url;
+        console.log("to ==> " + to);
+
+        return res.redirect(to);
+    }
+    next();
+})
 
 app.get('/', (req, res) => {
     res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
