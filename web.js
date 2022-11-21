@@ -6,16 +6,13 @@ const port = 8001;
 const axios = require('axios');
 const fs = require('fs');
 const https = require("https");
+const http = require('http');
 
-const options = {
+const sslOptions = {
     key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
     cert: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.crt.pem'), 
     ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
 };
-
-// const server = https.createServer(options, app).listen(port, function(){
-//     console.log("Express server listening on port " + port);
-// });
 
 app.get('/', (req, res) => {
     res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
@@ -84,6 +81,14 @@ app.get('/img3', function (req, res) {
 //     con.end();    
 // });
 
-app.listen(port, ()=> {
-    console.log('server is listening... port: ' + port);
+// app.listen(port, ()=> {
+//     console.log('server is listening... port: ' + port);
+// });
+
+// http.createServer(app).listen(3000);
+// https.createServer(options, app).listen(3030);
+https.createServer(sslOptions, app, (req, res) => {
+    console.log('필요한 코드 넣기');
+}).listen(8000, () => {
+    console.log('서버 포트: 8000 ...');
 });
