@@ -7,16 +7,15 @@ const axios = require('axios');
 const fs = require('fs');
 const https = require("https");
 
-
 const options = {
     key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
     cert: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.crt.pem'), 
     ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
 };
 
-const server = https.createServer(options, app).listen(port, function(){
-    console.log("Express server listening on port " + port);
-});
+// const server = https.createServer(options, app).listen(port, function(){
+//     console.log("Express server listening on port " + port);
+// });
 
 app.get('/', (req, res) => {
     res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
@@ -86,5 +85,5 @@ app.get('/img3', function (req, res) {
 // });
 
 app.listen(port, ()=> {
-    console.log('server is listening...');
+    console.log('server is listening... port: ' + port);
 });
