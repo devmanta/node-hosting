@@ -54,8 +54,7 @@ app.get('/img', function (req, res) {
 });
 app.get('/img2', function (req, res) {
     res.sendFile('/home/hosting_users/nodemanta/apps/nodemanta_nodemanta/1.png');
-})
-
+});
 
 app.get('/insert', (req, res) => {
     const queryString = req.query;
