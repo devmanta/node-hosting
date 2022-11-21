@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 8001;
-// const port = 443;
+// const port = 8001;
+const port = 443;
 // const con = require('./dbConnnection');
 const axios = require('axios');
 const fs = require('fs');
@@ -89,6 +89,6 @@ app.get('/img3', function (req, res) {
 // https.createServer(options, app).listen(3030);
 https.createServer(sslOptions, app, (req, res) => {
     console.log('필요한 코드 넣기');
-}).listen(443, () => {
-    console.log('서버 포트: 8000 ...');
+}).listen(port, () => {
+    console.log('server is listening for ' + port + ' ...');
 });
