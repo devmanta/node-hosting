@@ -41,7 +41,7 @@ app.get('/cafe24', (req, res) => {
 app.get('/.well-known/pki-validation/94BA84BED0F78FC2535B9D873A91BAF0.txt', (req, res) => {
     try {
         // const data = fs.readFileSync('94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
-        const data = fs.readFileSync('/home/hosting_users/nodemanta/apps/nodemanta/promotion-node/94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
+        const data = fs.readFileSync('/home/hosting_users/nodemanta/apps/nodemanta_nodemanta/94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
         console.log(data);
         res.send(data);
       } catch (err) {
