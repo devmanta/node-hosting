@@ -53,7 +53,7 @@ app.get('/img', function (req, res) {
     res.sendFile('/Users/heejin/Personal-heejin/promotion-node/1.png');
 });
 app.get('/img2', function (req, res) {
-    res.sendFile('/home/hosting_users/nodemanta/apps/nodemanta/promotion-node/1.png');
+    res.sendFile('/home/hosting_users/nodemanta/apps/nodemanta_nodemanta/promotion-node/1.png');
 })
 
 
