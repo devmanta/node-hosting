@@ -8,12 +8,6 @@ const fs = require('fs');
 const https = require("https");
 const http = require('http');
 
-const sslOptions = {
-    key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
-    cert: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.crt.pem'), 
-    ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
-};
-
 app.get("*", (req, res, next) => {
     console.log("middleware sercure app2 ==> " + req.headers['X-Forwarded-Proto']);
     console.log("req.protocol == " + req.protocol);
@@ -103,6 +97,19 @@ app.get('/img3', function (req, res) {
 
 // http.createServer(app).listen(3000);
 // https.createServer(options, app).listen(3030);
+http.createServer(function(req, res) {
+    let to = "https://" + req.headers.host + req.url;
+
+    res.writeHead(301,{Location: to});
+    res.end();
+  }).listen(80);
+
+const sslOptions = {
+    key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
+    cert: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.crt.pem'), 
+    ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
+};
+
 https.createServer(sslOptions, app, (req, res) => {
     console.log('필요한 코드 넣기');
 }).listen(port, () => {
