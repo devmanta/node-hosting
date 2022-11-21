@@ -1,15 +1,12 @@
 const express = require('express');
 const app = express();
 // const port = 8001;
-const port = 80;
+const port = 8000;
 // const con = require('./dbConnnection');
 const axios = require('axios');
 const fs = require('fs');
 const https = require("https");
 
-app.get('/', (req, res) => {
-    res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
-});
 
 const options = {
     key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
@@ -17,7 +14,13 @@ const options = {
     ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
 };
 
-const sslServer = https.createServer(options,app);
+const server = https.createServer(options, app).listen(port, function(){
+    console.log("Express server listening on port " + port);
+});
+
+app.get('/', (req, res) => {
+    res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
+});
 
 app.get('/test', (req, res) => {
     res.header('Content-Type', 'application/json');
@@ -82,7 +85,6 @@ app.get('/img3', function (req, res) {
 //     con.end();    
 // });
 
-// app.listen(port, ()=> {
-sslServer.listen(port, ()=> {
+app.listen(port, ()=> {
     console.log('server is listening...');
 });
