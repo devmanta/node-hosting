@@ -29,7 +29,8 @@ app.get('/db', (req, res) => {
 app.get('/cafe24', (req, res) => {
 	axios.get("http://devmanta.cafe24.com/test")
     	.then((response) => {
-        	res.json(response);
+            const{data} = response;
+        	res.json(response.data);
         })
         .catch((error) => {
         	res.json(error);
