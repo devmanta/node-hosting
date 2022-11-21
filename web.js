@@ -5,10 +5,19 @@ const port = 80;
 // const con = require('./dbConnnection');
 const axios = require('axios');
 const fs = require('fs');
+const https = require("https");
 
 app.get('/', (req, res) => {
     res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
 });
+
+const options = {
+    key: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.key.pem'), 
+    cert: fs.readFileSync('/root/promotions/node-hosting/devmanta.shop_202211216FBF7.crt.pem'), 
+    ca: fs.readFileSync('/root/promotions/node-hosting/ca-chain-bundle.pem')
+};
+
+const sslServer = https.createServer(options,app);
 
 app.get('/test', (req, res) => {
     res.header('Content-Type', 'application/json');
@@ -73,6 +82,7 @@ app.get('/img3', function (req, res) {
 //     con.end();    
 // });
 
-app.listen(port, ()=> {
+// app.listen(port, ()=> {
+sslServer.listen(port, ()=> {
     console.log('server is listening...');
 });
