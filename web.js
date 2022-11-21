@@ -41,7 +41,7 @@ app.get('/cafe24', (req, res) => {
 app.get('/.well-known/pki-validation/94BA84BED0F78FC2535B9D873A91BAF0.txt', (req, res) => {
     try {
         // const data = fs.readFileSync('94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
-        const data = fs.readFileSync('/home/hosting_users/nodemanta/apps/nodemanta/94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
+        const data = fs.readFileSync('/home/hosting_users/nodemanta/apps/nodemanta/promotion-node/94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
         console.log(data);
         res.send(data);
       } catch (err) {
@@ -49,15 +49,13 @@ app.get('/.well-known/pki-validation/94BA84BED0F78FC2535B9D873A91BAF0.txt', (req
       }
 });
 
-const {resolve} = require('path');
-const { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } = require('constants');
-// 👇️ if using ES6 Modules syntax
-// import { resolve } from 'path';
-
-app.get('/path', (req, res) => {
-    const absolutePath = resolve('');
-    res.send(absolutePath);
+app.get('/img', function (req, res) {
+    res.sendFile('/Users/heejin/Personal-heejin/promotion-node/1.png');
 });
+app.get('/img2', function (req, res) {
+    res.sendFile('/home/hosting_users/nodemanta/apps/nodemanta/promotion-node/1.png');
+})
+
 
 app.get('/insert', (req, res) => {
     const queryString = req.query;
