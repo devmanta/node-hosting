@@ -1,15 +1,15 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
-const con = mysql.createConnection({
-    host: "nodemanta.cafe24app.com",
-    user: "nodemanta",
-    password: "Dlwlrgkwk1!",
-    database: "nodemanta"
-});
+// const con = mysql.createConnection({
+//     host: "nodemanta.cafe24app.com",
+//     user: "nodemanta",
+//     password: "Dlwlrgkwk1!",
+//     database: "nodemanta"
+// });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
+// con.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Connected!");
+// });
 
-module.exports = con
+// module.exports = con
