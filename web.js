@@ -3,6 +3,7 @@ const app = express();
 const port = 8001;
 const con = require('./dbConnnection');
 const axios = require('axios');
+const fs = require('fs');
 
 app.get('/', (req, res) => {
     res.send('HELLO HEEJIN!! HELLOE HEEJIN!! HEELELEL awelkawe erlkwerl');
@@ -35,6 +36,16 @@ app.get('/cafe24', (req, res) => {
         .catch((error) => {
         	res.json(error);
         })
+});
+
+app.get('/.well-known/pki-validation/94BA84BED0F78FC2535B9D873A91BAF0.txt', (req, res) => {
+    try {
+        const data = fs.readFileSync('94BA84BED0F78FC2535B9D873A91BAF0.txt', 'ascii')
+        console.log(data);
+        res.send(data);
+      } catch (err) {
+        console.error(err)
+      }
 });
 
 app.get('/insert', (req, res) => {
