@@ -89,6 +89,6 @@ app.get('/img3', function (req, res) {
 // https.createServer(options, app).listen(3030);
 https.createServer(sslOptions, app, (req, res) => {
     console.log('필요한 코드 넣기');
-}).listen(8000, () => {
+}).listen(443, () => {
     console.log('서버 포트: 8000 ...');
 });
